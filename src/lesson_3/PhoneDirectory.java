@@ -3,22 +3,36 @@ package lesson_3;
 import java.util.*;
 
 
-public class PhoneDirectory  {
+public class PhoneDirectory {
 
-    private HashMap<Integer, String> map = new HashMap<>();
+    private HashMap<String, Set<String>> phone = new HashMap<>();
     private String name;
-    private int number;
+    private String number;
 
-    public void add(int number, String name) {
-        this.name = name;
+    public void add(String name, String number) {
+        Set<String> list = new HashSet<>();
         this.number = number;
-        map.put(number, name);
+        this.name = name;
+        int k = 0;
+
+        for (Map.Entry<String, Set<String>> entry : phone.entrySet()) {
+            if (Objects.equals(name, entry.getKey())) {
+                list.addAll(entry.setValue(Collections.singleton(entry.getKey())));
+                list.add(number);
+                phone.put(name, list);
+                k = 1;
+            }
+        }
+        if (k == 0) {
+            phone.put(name, Collections.singleton(number));
+        }
     }
 
+
     public void get(String name) {
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            if (Objects.equals(name, entry.getValue())) {
-                System.out.println("Фамилия: " + entry.getValue() + " Номер телефона: " + entry.getKey());
+        for (Map.Entry<String, Set<String>> entry : phone.entrySet()) {
+            if (Objects.equals(name, entry.getKey())) {
+                System.out.println("Фамилия: " + entry.getKey() + " Номер телефона: " + entry.toString());
             }
         }
     }
@@ -28,8 +42,8 @@ public class PhoneDirectory  {
     }
 
     public void toStringArr() {
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            System.out.println("Фамилия: " + entry.getValue() + " Номер телефона: " + entry.getKey());
+        for (Map.Entry<String, Set<String>> entry : phone.entrySet()) {
+            System.out.println("Фамилия: " + entry.getKey() + " Номер телефона: " + entry.getValue());
         }
     }
 
