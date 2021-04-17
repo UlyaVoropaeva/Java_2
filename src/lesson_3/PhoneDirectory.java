@@ -46,6 +46,5 @@ public class PhoneDirectory {
             System.out.println("Фамилия: " + entry.getKey() + " Номер телефона: " + entry.getValue());
         }
     }
-
 }
 

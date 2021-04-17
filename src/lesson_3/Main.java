@@ -34,7 +34,6 @@ public class Main {
         System.out.println("Список уникальных слов, из которых состоит массив (дубликаты не считаем):");
         arrayListMassive.ListUniqueWords();
 
-
         PhoneDirectory phoneDirectory = new PhoneDirectory();
 
         phoneDirectory.add("Ivanov", "+7123456");

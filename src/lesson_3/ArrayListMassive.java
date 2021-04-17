@@ -24,7 +24,6 @@ public class ArrayListMassive {
                     k += 1;
                 }
             }
-
         }
         return newList.toString();
     }
